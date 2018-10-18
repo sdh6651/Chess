@@ -4,24 +4,41 @@ using UnityEngine;
 
 public class CON1 : MonoBehaviour
 {
-    Camera camera;
+    static CON1 _instance;
+    public static CON1 Instance()
+    {
+        return _instance;
+    }
+    Camera came;
     public GameObject tagetObj;
+    public GameObject selObj;
+    public bool tep;
     void Start()
     {
-        camera = GetComponent<Camera>();
+        came = GetComponent<Camera>();
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = came.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
                 Debug.Log(hit.transform.name);
-                tagetObj = hit.transform.gameObject;
-                tagetObj.GetComponent<Pawn>().pOnOff = true;
+                tagetObj = hit.transform.gameObject;                
+                if (tagetObj.tag == "pawn")
+                {
+                    tep = false;
+                    tagetObj.GetComponent<Pawn>().pOnOff = true;
+                    selObj = tagetObj;
+                }
+                if (tagetObj.tag == "pointmove")
+                {
+                    selObj.GetComponent<Pawn>().moveObj = true;
+                    tep = true;
+                }                
             }
-        }
+        }        
     }
 }

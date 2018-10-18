@@ -3,28 +3,63 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Pawn : MonoBehaviour {
-    public bool pOnOff;
-    public GameObject movep;
-    public GameObject sel;
-    GameObject whoObj;
+    public GameObject cameracon;//선택된 오브젝트
+    public GameObject movep;//무브 인팩트
+    public GameObject movep1;
+    public GameObject selp;//선텍 인팩트
+    public GameObject whoObj;//오브젝트를 담을곳
+    //위치값정하기
     public float my;
     public float mx;
-    public float mz;
-    public GameObject cameracon;
-   
-	void Update ()
-    {
-        if (pOnOff == true)
+    public float mz;    
+    public bool fust;//첫행동 구분
+    public bool level;//승급 구분
+    public bool pOnOff;
+    public bool moveObj;
+    public GameObject forObj;
+    public float rayf;
+
+    void Update ()
+    {/*
+        Ray ray =new Ray(transform.position,transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit,rayf))
         {
-            Instantiate(sel, transform.position,transform.rotation);
+            forObj = hit.transform.gameObject;            
+        }*/
+        
+        
+        if (pOnOff == true&&fust==false)
+        {            
+            Instantiate(selp, transform.position,transform.rotation);
             whoObj = cameracon.GetComponent<CON1>().tagetObj;
             my = whoObj.transform.position.y+0.15f;
             mx = whoObj.transform.position.x;
             mz = whoObj.transform.position.z+0.5f;
-            Instantiate(movep,new Vector3(mx,my,mz),Quaternion.Euler(0,0,0));
+            Instantiate(movep1,new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
             mz = whoObj.transform.position.z + 1;
             Instantiate(movep,new Vector3(mx, my, mz),Quaternion.Euler(0, 0, 0));
+            pOnOff = false;            
+        }
+        if (pOnOff == true && fust == true)
+        {
+            Instantiate(selp, transform.position, transform.rotation);
+            whoObj = cameracon.GetComponent<CON1>().tagetObj;
+            my = whoObj.transform.position.y + 0.15f;
+            mx = whoObj.transform.position.x;
+            mz = whoObj.transform.position.z + 0.5f;
+            Instantiate(movep, new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
             pOnOff = false;
+        }
+        if (moveObj == true)
+        {
+            fust = true;
+            whoObj = cameracon.GetComponent<CON1>().tagetObj;
+            my = whoObj.transform.position.y-0.15f;
+            mx = whoObj.transform.position.x;
+            mz = whoObj.transform.position.z;
+            transform.position = new Vector3(mx,my,mz);
+            moveObj = false;            
         }
 	}
 }
