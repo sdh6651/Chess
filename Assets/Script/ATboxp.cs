@@ -7,6 +7,7 @@ public class ATboxp : MonoBehaviour
     GameObject con;
     public bool despoint;
     public GameObject inObj;
+    public bool enck;
     void Start()
     {
         con = GameObject.Find("Main Camera");
@@ -18,13 +19,21 @@ public class ATboxp : MonoBehaviour
         {
             Destroy(gameObject, 0.1f);
         }
+        if (enck == false)
+        {
+            Destroy(gameObject, 0.5f);
+        }
     }
 
     private void OnTriggerEnter(Collider col)
-    {
-        if (col.gameObject.tag != "enemy")
+    {      
+        if (col.gameObject.tag == "enemy")
         {
-            Destroy(gameObject, 0.1f);
+            enck = true;
+        }
+        else
+        {
+            enck = false;
         }
     }
 }

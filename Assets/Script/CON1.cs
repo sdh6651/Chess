@@ -13,9 +13,12 @@ public class CON1 : MonoBehaviour
     public GameObject tagetObj;
     public GameObject selObj;
     public bool tep;
+    public bool whitetun;    
+
     void Start()
     {
         came = GetComponent<Camera>();
+        whitetun = true;
     }
     void Update()
     {
@@ -37,6 +40,7 @@ public class CON1 : MonoBehaviour
                 {
                     selObj.GetComponent<Pawn>().moveObj = true;
                     tep = true;
+                    whitetun = false;
                 }                
             }
         }        
