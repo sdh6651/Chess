@@ -28,5 +28,20 @@ public class Movep : MonoBehaviour
         {
             Destroy(gameObject, 0.1f);
         }
+        if (col.gameObject.tag == "king" || col.gameObject.tag == "knight")
+        {
+            
+            Destroy(gameObject);
+        }
+        if (col.gameObject.tag == "queen" || col.gameObject.tag == "pawn")
+        {
+         
+            Destroy(gameObject);
+        }
+        if (col.gameObject.tag == "bishop" || col.gameObject.tag == "rook")
+        {
+           
+            Destroy(gameObject);
+        }
     }
 }

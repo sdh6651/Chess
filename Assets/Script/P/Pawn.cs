@@ -74,7 +74,7 @@ public class Pawn : MonoBehaviour {
         {
             fust = true;
             whoObj = cameracon.GetComponent<CON1>().tagetObj;
-            my = whoObj.transform.position.y-0.15f;
+            my = transform.position.y;
             mx = whoObj.transform.position.x;
             mz = whoObj.transform.position.z;
             transform.position = new Vector3(mx,my,mz);

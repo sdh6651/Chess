@@ -9,6 +9,13 @@ TagManager:
   - pawn
   - pointmove
   - enemy
+  - bishop
+  - atbox
+  - wall
+  - rook
+  - queen
+  - knight
+  - king
   layers:
   - Default
   - TransparentFX
@@ -18,8 +25,8 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
-  - 
+  - w
+  - b
   - 
   - 
   - 

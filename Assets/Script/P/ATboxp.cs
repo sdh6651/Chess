@@ -8,20 +8,22 @@ public class ATboxp : MonoBehaviour
     public bool despoint;
     public GameObject inObj;
     public bool enck;
+    public GameObject ineObj;
     void Start()
     {
-        con = GameObject.Find("Main Camera");
+        con = GameObject.Find("Main Camera");       
+        despoint = false;
     }
     void Update()
     {
         despoint = con.GetComponent<CON1>().tep;
         if (despoint == true)
         {
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject, 1f);
         }
         if (enck == false)
         {
-            Destroy(gameObject, 0.5f);
+            Destroy(gameObject,0.2f);
         }
     }
 
@@ -30,10 +32,12 @@ public class ATboxp : MonoBehaviour
         if (col.gameObject.tag == "enemy")
         {
             enck = true;
+            ineObj = col.gameObject;
         }
-        else
-        {
-            enck = false;
-        }
+     
+    }
+    public void Delete()
+    {
+        Destroy(ineObj);        
     }
 }
