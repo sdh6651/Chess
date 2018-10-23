@@ -12,9 +12,11 @@ public class Moven : MonoBehaviour {
     public float my;
     public float mz;
     public GameObject atmoveObj;
+    public float wtun;
     void Start()
     {
         con = GameObject.Find("Main Camera");
+        wtun = con.GetComponent<CON1>().whitetun;
     }
 
     void Update()
@@ -36,29 +38,66 @@ public class Moven : MonoBehaviour {
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "enemy")
-        {           
-            Inatobj();
-            Debug.Log("적감지");
-            Destroy(gameObject);
+        if (col.gameObject.tag == "bking" || col.gameObject.tag == "bknight")
+        {
+            
+            if (wtun == 1)
+            {
+                Inatobj();
+            }
+            Destroy(gameObject, 0.1f);
+        }
+        if (col.gameObject.tag == "bqueen" || col.gameObject.tag == "bpawn")
+        {
+            
+            if (wtun == 1)
+            {
+                Inatobj();
+            }
+            Destroy(gameObject, 0.1f);
+        }
+        if (col.gameObject.tag == "bbishop" || col.gameObject.tag == "brook")
+        {
+           
+            if (wtun == 1)
+            {
+                Inatobj();
+            }
+            Destroy(gameObject, 0.1f);
+
         }
         if (col.gameObject.tag == "wall")
         {
+            
             Destroy(gameObject);
         }
         if (col.gameObject.tag == "king" || col.gameObject.tag == "knight")
         {
+            
+            if (wtun == -1)
+            {
+                Inatobj();
+            }
             Destroy(gameObject);
         }
         if (col.gameObject.tag == "queen" || col.gameObject.tag == "pawn")
         {
+            
+            if (wtun == -1)
+            {
+                Inatobj();
+            }
             Destroy(gameObject);
         }
         if (col.gameObject.tag == "bishop" || col.gameObject.tag == "rook")
         {
+           
+            if (wtun == -1)
+            {
+                Inatobj();
+            }
             Destroy(gameObject);
         }
-
     }
 }
 

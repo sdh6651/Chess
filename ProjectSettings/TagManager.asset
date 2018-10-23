@@ -16,6 +16,15 @@ TagManager:
   - queen
   - knight
   - king
+  - bpawn
+  - bbishop
+  - brook
+  - bknight
+  - bqueen
+  - bking
+  - lcbox
+  - rcbox
+  - level
   layers:
   - Default
   - TransparentFX

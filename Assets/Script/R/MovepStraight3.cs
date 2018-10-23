@@ -23,7 +23,7 @@ public class MovepStraight3 : MonoBehaviour {
         despoint = con.GetComponent<CON1>().tep;
         if (despoint == true)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 0.1f);
         }
         if (limt == 1)
         {
@@ -45,11 +45,27 @@ public class MovepStraight3 : MonoBehaviour {
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "enemy")
+        if (col.gameObject.tag == "bking" || col.gameObject.tag == "bknight")
         {
+            limt = 0;
             Inatobj();
             Debug.Log("적감지");
             Destroy(gameObject);
+        }
+        if (col.gameObject.tag == "bqueen" || col.gameObject.tag == "bpawn")
+        {
+            limt = 0;
+            Inatobj();
+            Debug.Log("적감지");
+            Destroy(gameObject, 0.1f);
+        }
+        if (col.gameObject.tag == "bbishop" || col.gameObject.tag == "brook")
+        {
+            limt = 0;
+            Inatobj();
+            Debug.Log("적감지");
+            Destroy(gameObject, 0.1f);
+
         }
         if (col.gameObject.tag == "wall")
         {

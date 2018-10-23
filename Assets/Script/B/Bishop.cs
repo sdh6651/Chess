@@ -16,7 +16,11 @@ public class Bishop : MonoBehaviour {
     public float mz;       
     public bool pOnOff;//말 선택확인
     public bool moveObj;//말 움직임 확인
-    public GameObject forObj;   
+    public GameObject forObj;
+    void Start()
+    {
+        cameracon = GameObject.Find("Main Camera");
+    }
     void Update()
     {
         if (pOnOff == true)

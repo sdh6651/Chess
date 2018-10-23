@@ -11,11 +11,12 @@ public class Movepdiagonal2 : MonoBehaviour {
     public float mx;
     public float mz;
     public float limt;
-
+    public float wtun;
     void Start()
     {
         con = GameObject.Find("Main Camera");
         StartCoroutine(WaitAndPrint(0.2F));
+        wtun = con.GetComponent<CON1>().whitetun;
     }
 
     void Update()
@@ -23,7 +24,7 @@ public class Movepdiagonal2 : MonoBehaviour {
         despoint = con.GetComponent<CON1>().tep;
         if (despoint == true)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 0.1f);
         }
         if (limt == 1)
         {
@@ -52,11 +53,33 @@ public class Movepdiagonal2 : MonoBehaviour {
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "enemy")
+        if (col.gameObject.tag == "bking" || col.gameObject.tag == "bknight")
         {
-            Inatobj();
-            Debug.Log("적감지");
-            Destroy(gameObject);
+            limt = 0;
+            if (wtun == 1)
+            {
+                Inatobj();
+            }
+            Destroy(gameObject, 0.1f);
+        }
+        if (col.gameObject.tag == "bqueen" || col.gameObject.tag == "bpawn")
+        {
+            limt = 0;
+            if (wtun == 1)
+            {
+                Inatobj();
+            }
+            Destroy(gameObject, 0.1f);
+        }
+        if (col.gameObject.tag == "bbishop" || col.gameObject.tag == "brook")
+        {
+            limt = 0;
+            if (wtun == 1)
+            {
+                Inatobj();
+            }
+            Destroy(gameObject, 0.1f);
+
         }
         if (col.gameObject.tag == "wall")
         {
@@ -66,18 +89,30 @@ public class Movepdiagonal2 : MonoBehaviour {
         if (col.gameObject.tag == "king" || col.gameObject.tag == "knight")
         {
             limt = 0;
+            if (wtun == -1)
+            {
+                Inatobj();
+            }
             Destroy(gameObject);
         }
         if (col.gameObject.tag == "queen" || col.gameObject.tag == "pawn")
         {
             limt = 0;
+            if (wtun == -1)
+            {
+                Inatobj();
+            }
             Destroy(gameObject);
         }
         if (col.gameObject.tag == "bishop" || col.gameObject.tag == "rook")
         {
             limt = 0;
+            if (wtun == -1)
+            {
+                Inatobj();
+            }
             Destroy(gameObject);
-        }       
+        }
     }
     IEnumerator WaitAndPrint(float waitTime)
     {

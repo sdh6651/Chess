@@ -161,7 +161,8 @@ MonoBehaviour:
   mx: 0
   my: 0
   mz: 0
-  atmoveObj: {fileID: 1276738270574790, guid: 57bae82ca08958f4bb44e3ecf4e7f1d6, type: 2}
+  atmoveObj: {fileID: 1189239746723172, guid: dac04ff436b89b04bbcabec347ee0827, type: 2}
+  wtun: 0
 --- !u!198 &198876899758348318
 ParticleSystem:
   m_ObjectHideFlags: 1

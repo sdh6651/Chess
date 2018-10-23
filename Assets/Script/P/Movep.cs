@@ -24,23 +24,28 @@ public class Movep : MonoBehaviour
    
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "enemy")
+        if (col.gameObject.tag == "bking" || col.gameObject.tag == "bknight")
         {
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject);
+        }
+        if (col.gameObject.tag == "bqueen" || col.gameObject.tag == "bpawn")
+        {
+            Destroy(gameObject);
+        }
+        if (col.gameObject.tag == "bbishop" || col.gameObject.tag == "brook")
+        {
+            Destroy(gameObject);
         }
         if (col.gameObject.tag == "king" || col.gameObject.tag == "knight")
-        {
-            
+        {            
             Destroy(gameObject);
         }
         if (col.gameObject.tag == "queen" || col.gameObject.tag == "pawn")
-        {
-         
+        {         
             Destroy(gameObject);
         }
         if (col.gameObject.tag == "bishop" || col.gameObject.tag == "rook")
-        {
-           
+        {           
             Destroy(gameObject);
         }
     }

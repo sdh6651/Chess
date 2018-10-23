@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   despoint: 0
-  atmoveObj: {fileID: 1276738270574790, guid: 57bae82ca08958f4bb44e3ecf4e7f1d6, type: 2}
+  atmoveObj: {fileID: 1189239746723172, guid: dac04ff436b89b04bbcabec347ee0827, type: 2}
   moveclon: {fileID: 1080108056943962}
   my: 0
   mx: 0

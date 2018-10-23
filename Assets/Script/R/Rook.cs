@@ -17,6 +17,12 @@ public class Rook : MonoBehaviour {
     public bool pOnOff;//말 선택확인
     public bool moveObj;//말 움직임 확인
     public GameObject forObj;
+    public bool csObj;
+    public bool csObj1;
+    void Start()
+    {
+        cameracon = GameObject.Find("Main Camera");
+    }
     void Update()
     {
         if (pOnOff == true)
@@ -42,13 +48,32 @@ public class Rook : MonoBehaviour {
             pOnOff = false;
         }
         if (moveObj == true)
+        {         
+            
+                whoObj = cameracon.GetComponent<CON1>().tagetObj;
+                my = transform.position.y;
+                mx = whoObj.transform.position.x;
+                mz = whoObj.transform.position.z;
+                transform.position = new Vector3(mx, my, mz);
+                moveObj = false;
+        }
+        if (csObj == true)
         {
             whoObj = cameracon.GetComponent<CON1>().tagetObj;
             my = transform.position.y;
-            mx = whoObj.transform.position.x;
+            mx = whoObj.transform.position.x-0.5f;
             mz = whoObj.transform.position.z;
             transform.position = new Vector3(mx, my, mz);
-            moveObj = false;
+            csObj = false;
+        }
+        if (csObj1 == true)
+        {
+            whoObj = cameracon.GetComponent<CON1>().tagetObj;
+            my = transform.position.y;
+            mx = whoObj.transform.position.x +0.5f;
+            mz = whoObj.transform.position.z;
+            transform.position = new Vector3(mx, my, mz);
+            csObj1 = false;
         }
     }
 }
