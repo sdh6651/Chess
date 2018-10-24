@@ -29,7 +29,7 @@ public class Bpawn : MonoBehaviour {
 
     void Update()
     {
-        if (pOnOff == true && fust == false)
+        if (pOnOff == true)
         {
             Instantiate(selp, transform.position, transform.rotation);
             whoObj = cameracon.GetComponent<CON1>().tagetObj;
@@ -44,31 +44,9 @@ public class Bpawn : MonoBehaviour {
             my = whoObj.transform.position.y + 0.15f;
             mx = whoObj.transform.position.x - 0.5f;
             mz = whoObj.transform.position.z - 0.5f;
-            Instantiate(atbox, new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
-            mz = whoObj.transform.position.z - 1;
-            my = whoObj.transform.position.y + 0.15f;
-            mx = whoObj.transform.position.x;
-            Instantiate(movep, new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
+            Instantiate(atbox, new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));            
             pOnOff = false;
-        }
-        if (pOnOff == true && fust == true)
-        {
-            Instantiate(selp, transform.position, transform.rotation);
-            whoObj = cameracon.GetComponent<CON1>().tagetObj;
-            my = whoObj.transform.position.y + 0.15f;
-            mx = whoObj.transform.position.x;
-            mz = whoObj.transform.position.z - 0.5f;
-            Instantiate(movep, new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
-            my = whoObj.transform.position.y + 0.15f;
-            mx = whoObj.transform.position.x + 0.5f;
-            mz = whoObj.transform.position.z - 0.5f;
-            Instantiate(atbox, new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
-            my = whoObj.transform.position.y + 0.15f;
-            mx = whoObj.transform.position.x - 0.5f;
-            mz = whoObj.transform.position.z - 0.5f;
-            Instantiate(atbox, new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
-            pOnOff = false;
-        }
+        }        
         if (moveObj == true)
         {
             fust = true;

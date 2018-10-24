@@ -19,6 +19,7 @@ public class Rook : MonoBehaviour {
     public GameObject forObj;
     public bool csObj;
     public bool csObj1;
+    public bool tun;
     void Start()
     {
         cameracon = GameObject.Find("Main Camera");
@@ -45,17 +46,17 @@ public class Rook : MonoBehaviour {
             mx = whoObj.transform.position.x + 0.5f;
             mz = whoObj.transform.position.z;
             Instantiate(movep3, new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
-            pOnOff = false;
+            pOnOff = false;            
         }
         if (moveObj == true)
-        {         
-            
-                whoObj = cameracon.GetComponent<CON1>().tagetObj;
-                my = transform.position.y;
-                mx = whoObj.transform.position.x;
-                mz = whoObj.transform.position.z;
-                transform.position = new Vector3(mx, my, mz);
-                moveObj = false;
+        {
+            whoObj = cameracon.GetComponent<CON1>().tagetObj;
+            my = transform.position.y;
+            mx = whoObj.transform.position.x;
+            mz = whoObj.transform.position.z;
+            transform.position = new Vector3(mx, my, mz);
+            moveObj = false;
+            tun = true;
         }
         if (csObj == true)
         {

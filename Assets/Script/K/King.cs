@@ -84,20 +84,26 @@ public class King : MonoBehaviour {
     public void Cas()
     {
         lcas = lck.GetComponent<Enemyck>().forObj;
-        rcas = rck.GetComponent<Enemyck>().forObj;
+        rcas = rck.GetComponent<Enemyck>().forObj;        
         if (lcas.gameObject.tag == "rook" || lcas.gameObject.tag == "brook")
-        {           
-            my = whoObj.transform.position.y + 0.15f;
-            mx = whoObj.transform.position.x - 1f;
-            mz = whoObj.transform.position.z;
-            Instantiate(lcbox, new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
+        {
+            if (lcas.GetComponent<Rook>().tun == false)
+            {
+                my = whoObj.transform.position.y + 0.15f;
+                mx = whoObj.transform.position.x - 1f;
+                mz = whoObj.transform.position.z;
+                Instantiate(lcbox, new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
+            }
         }
         if (rcas.gameObject.tag == "rook" || rcas.gameObject.tag == "brook")
         {
-            my = whoObj.transform.position.y + 0.15f;
-            mx = whoObj.transform.position.x + 1f;
-            mz = whoObj.transform.position.z;
-            Instantiate(rcbox, new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
+            if (rcas.GetComponent<Rook>().tun == false)
+            {
+                my = whoObj.transform.position.y + 0.15f;
+                mx = whoObj.transform.position.x + 1f;
+                mz = whoObj.transform.position.z;
+                Instantiate(rcbox, new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
+            }
         }
     }
 }

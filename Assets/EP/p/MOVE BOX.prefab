@@ -157,6 +157,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   despoint: 0
   inObj: {fileID: 0}
+  enp: 0
+  fustt: 0
+  my: 0
+  mx: 0
+  mz: 0
+  inmove2: {fileID: 1095365359785354, guid: 41fa80d2d0026c34b92a6a95630708ef, type: 2}
+  limt: 0
 --- !u!198 &198616633193934510
 ParticleSystem:
   m_ObjectHideFlags: 1

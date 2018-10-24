@@ -16,6 +16,7 @@ public class CON1 : MonoBehaviour
     public float whitetun;
     public bool pw;
     public bool bs;
+    public bool bbs;
     public bool rk;
     public bool q;
     public bool kn;
@@ -33,6 +34,10 @@ public class CON1 : MonoBehaviour
     public float bnlog;
     public float brlog;
     public float bplog;
+    public bool en;
+    public float timew;
+    public float timeb;
+    public float limttime;    
 
     void Start()
     {
@@ -41,6 +46,14 @@ public class CON1 : MonoBehaviour
     }
     void Update()
     {
+        if (whitetun==-1)
+        {
+            timeb += Time.deltaTime;            
+        }
+        if (whitetun == 1)
+        {
+            timew += Time.deltaTime * 0.1f;           
+        }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Ray ray = came.ScreenPointToRay(Input.mousePosition);
@@ -53,7 +66,7 @@ public class CON1 : MonoBehaviour
                 {                    
                     pw = true;
                     tep = false;
-                    tagetObj.GetComponent<Pawn>().pOnOff = true;
+                    tagetObj.GetComponent<Pawn>().pOnOff = true;                    
                     selObj = tagetObj;                    
                 }
                 if (tagetObj.tag == "pointmove"&&pw==true && whitetun == 1)
@@ -88,7 +101,7 @@ public class CON1 : MonoBehaviour
                 if (tagetObj.tag == "atbox" && bs == true && whitetun == 1)
                 {
                     whitetun *= -1;
-                    pw = false;
+                    bs = false;
                     selObj.GetComponent<Bishop>().moveObj = true;
                     tep = true;
                     tagetObj.GetComponent<ATboxp>().Delete();
@@ -201,6 +214,13 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "Board")
                 {
+                    pw = false;
+                    bs = false;
+                    bbs = false;
+                    rk = false;
+                    q = false;
+                    kn = false;
+                    k = false;
                     tep = true;
                 }
                 if (tagetObj.tag == "bpawn" && tep == true && whitetun == -1)
@@ -227,22 +247,22 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "bbishop" && tep == true && whitetun == -1)
                 {
-                    bs = true;
+                    bbs = true;
                     tep = false;
                     tagetObj.GetComponent<Bishop>().pOnOff = true;
                     selObj = tagetObj;
                 }
-                if (tagetObj.tag == "pointmove" && bs == true && whitetun == -1)
+                if (tagetObj.tag == "pointmove" && bbs == true && whitetun == -1)
                 {
-                    bs = false;
+                    bbs = false;
                     selObj.GetComponent<Bishop>().moveObj = true;
                     tep = true;
                     whitetun *= -1;
                 }
-                if (tagetObj.tag == "atbox" && bs == true && whitetun == -1)
+                if (tagetObj.tag == "atbox" && bbs == true && whitetun == -1)
                 {
                     whitetun *= -1;
-                    bs = false;
+                    bbs = false;
                     selObj.GetComponent<Bishop>().moveObj = true;
                     tep = true;
                     tagetObj.GetComponent<ATboxb>().Delete();

@@ -21,7 +21,7 @@ public class ATboxb : MonoBehaviour
         despoint = con.GetComponent<CON1>().tep;
         if (despoint == true)
         {
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject,0.1f);
         }
     }
 
@@ -29,17 +29,17 @@ public class ATboxb : MonoBehaviour
     {
         if (col.gameObject.tag == "bking" || col.gameObject.tag == "bknight" && wtun == 1)
         {
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject, 0.3f);
             ineObj = col.gameObject;
         }
         if (col.gameObject.tag == "bqueen" || col.gameObject.tag == "bpawn" && wtun == 1)
         {
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject, 0.3f);
             ineObj = col.gameObject;
         }
         if (col.gameObject.tag == "bbishop" || col.gameObject.tag == "brook" && wtun == 1)
         {
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject, 0.3f);
             ineObj = col.gameObject;
         }
         if (col.gameObject.tag == "king" || col.gameObject.tag == "knight" && wtun == -1f)

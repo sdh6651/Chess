@@ -24,7 +24,7 @@ public class Moven : MonoBehaviour {
         despoint = con.GetComponent<CON1>().tep;
         if (despoint == true)
         {
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject,0.1f);
         }
     }
     void Inatobj()
