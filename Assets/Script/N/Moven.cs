@@ -81,8 +81,7 @@ public class Moven : MonoBehaviour {
             Destroy(gameObject);
         }
         if (col.gameObject.tag == "queen" || col.gameObject.tag == "pawn")
-        {
-            
+        {            
             if (wtun == -1)
             {
                 Inatobj();

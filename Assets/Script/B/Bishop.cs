@@ -17,6 +17,7 @@ public class Bishop : MonoBehaviour {
     public bool pOnOff;//말 선택확인
     public bool moveObj;//말 움직임 확인
     public GameObject forObj;
+
     void Start()
     {
         cameracon = GameObject.Find("Main Camera");

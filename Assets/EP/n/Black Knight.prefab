@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 54670313686080966}
   - component: {fileID: 65405581811245122}
   - component: {fileID: 114761838438142196}
+  - component: {fileID: 114465562422183020}
   m_Layer: 0
   m_Name: Black Knight
   m_TagString: bknight
@@ -113,6 +114,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.8502083, y: 11.248383, z: 5.850208}
   m_Center: {x: 0, y: 5.637516, z: 0.00000059604656}
+--- !u!114 &114465562422183020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1153492615018524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d26558627b23246855fb9524957525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveEp: {fileID: 1271997893731502, guid: 40ee47dffc75fa048a1ff0b0cef3d280, type: 2}
+  atEp: {fileID: 1475905400444486, guid: e1f9d743627ef8343bb555cb3ff7243f, type: 2}
+  dieEp: {fileID: 1854812759489748, guid: b6aeb59e30cfff64287fca4c4433b3a0, type: 2}
+  con: {fileID: 0}
+  pos: {fileID: 0}
 --- !u!114 &114761838438142196
 MonoBehaviour:
   m_ObjectHideFlags: 1

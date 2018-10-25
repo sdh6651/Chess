@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CON1 : MonoBehaviour
 {
     static CON1 _instance;
@@ -37,15 +37,31 @@ public class CON1 : MonoBehaviour
     public bool en;
     public float timew;
     public float timeb;
-    public float limttime;    
+    public float limttime;
+    public GameObject soundObj;
+    public GameObject wwin;
+    public GameObject bwin;
+    public GameObject draw;
+    public GameObject menu;
+    public GameObject wlog;
+    public GameObject blog;
+    public GameObject trun;
 
     void Start()
     {
         came = GetComponent<Camera>();
-        whitetun = 1;
+        whitetun = 1;       
     }
     void Update()
     {
+        if (bklog == 1)
+        {
+            Winwhigt();
+        }
+        if (wklog == 1)
+        {
+            Winblack();
+        }
         if (whitetun==-1)
         {
             timeb += Time.deltaTime;            
@@ -63,7 +79,8 @@ public class CON1 : MonoBehaviour
                 Debug.Log(hit.transform.name);
                 tagetObj = hit.transform.gameObject;                
                 if (tagetObj.tag == "pawn"&& tep == true&&whitetun==1)
-                {                    
+                {
+                    soundObj.GetComponent<SoundMain>().pselsep.Play();
                     pw = true;
                     tep = false;
                     tagetObj.GetComponent<Pawn>().pOnOff = true;                    
@@ -71,21 +88,28 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "pointmove"&&pw==true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().pmovesep.Play();
                     pw = false;
                     selObj.GetComponent<Pawn>().moveObj = true;
+                    selObj.GetComponent<EpCon>().MoveEp();
                     tep = true;
                     whitetun *= -1;
+                    Trunck();
                 }
                 if (tagetObj.tag == "atbox" && pw == true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().pmovesep.Play();
                     whitetun *= -1;
+                    Trunck();
                     pw = false;
+                    soundObj.GetComponent<SoundMain>().pat.Play();
                     selObj.GetComponent<Pawn>().moveObj = true;
                     tep = true;
                     tagetObj.GetComponent<ATboxp>().Delete();
                 }
                 if (tagetObj.tag == "bishop" && tep == true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().bselsep.Play();
                     bs = true;
                     tep = false;
                     tagetObj.GetComponent<Bishop>().pOnOff = true;
@@ -93,21 +117,28 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "pointmove"&&bs==true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().bmovesep.Play();
                     whitetun *= -1;
+                    Trunck();
                     bs = false;
+                    selObj.GetComponent<EpCon>().MoveEp();
                     selObj.GetComponent<Bishop>().moveObj = true;
                     tep = true;                   
                 }
                 if (tagetObj.tag == "atbox" && bs == true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().bmovesep.Play();
                     whitetun *= -1;
+                    Trunck();
                     bs = false;
+                    soundObj.GetComponent<SoundMain>().bat.Play();
                     selObj.GetComponent<Bishop>().moveObj = true;
                     tep = true;
                     tagetObj.GetComponent<ATboxp>().Delete();
                 }
                 if (tagetObj.tag == "queen" && tep == true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().qselsep.Play();
                     q = true;
                     limt = 0;
                     tep = false;
@@ -116,21 +147,28 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "pointmove" && q == true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().qmovesep.Play();
                     q = false;
+                    selObj.GetComponent<EpCon>().MoveEp();
                     selObj.GetComponent<Queen>().moveObj = true;
                     tep = true;
                     whitetun *= -1;
+                    Trunck();
                 }
                 if (tagetObj.tag == "atbox" && q == true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().qmovesep.Play();
                     whitetun *= -1;
+                    Trunck();
                     q = false;
+                    soundObj.GetComponent<SoundMain>().qAt.Play();
                     selObj.GetComponent<Queen>().moveObj = true;
                     tep = true;
                     tagetObj.GetComponent<ATboxp>().Delete();
                 }
                 if (tagetObj.tag == "knight" && tep == true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().nselsep.Play();
                     kn = true;
                     limt = 0;
                     tep = false;
@@ -139,21 +177,28 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "pointmove" && kn == true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().nmovesep.Play();
                     kn = false;
+                    selObj.GetComponent<EpCon>().MoveEp();
                     selObj.GetComponent<Knight>().moveObj = true;
                     tep = true;
+                    Trunck();
                     whitetun *= -1;
                 }
                 if (tagetObj.tag == "atbox" && kn == true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().nmovesep.Play();
                     whitetun *= -1;
+                    Trunck();
                     kn = false;
+                    soundObj.GetComponent<SoundMain>().nat.Play();
                     selObj.GetComponent<Knight>().moveObj = true;
                     tep = true;
                     tagetObj.GetComponent<ATboxp>().Delete();
                 }
                 if (tagetObj.tag == "rook" && tep == true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().rselsep.Play();
                     rk = true;
                     tep = false;
                     tagetObj.GetComponent<Rook>().pOnOff = true;
@@ -161,21 +206,29 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "pointmove" && rk == true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().rmovesep.Play();
                     rk = false;
+                    selObj.GetComponent<EpCon>().MoveEp();
                     selObj.GetComponent<Rook>().moveObj = true;
                     tep = true;
                     whitetun *= -1;
+                    Trunck();
                 }
                 if (tagetObj.tag == "atbox" && rk == true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().rmovesep.Play();
                     whitetun *= -1;
+                    Trunck();
                     rk = false;
+                    soundObj.GetComponent<SoundMain>().rat.Play();
+                    soundObj.GetComponent<SoundMain>().ratv.Play();
                     selObj.GetComponent<Rook>().moveObj = true;
                     tep = true;
                     tagetObj.GetComponent<ATboxp>().Delete();
                 }
                 if (tagetObj.tag == "king" && tep == true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().kselsep.Play();
                     k = true;
                     tep = false;
                     tagetObj.GetComponent<King>().pOnOff = true;
@@ -187,6 +240,7 @@ public class CON1 : MonoBehaviour
                     selObj.GetComponent<King>().moveObj = true;
                     selObj.GetComponent<King>().lcas.GetComponent<Rook>().csObj1 = true;                  
                     whitetun *= -1;
+                    Trunck();
                     tep = true;
                 }
                 if (tagetObj.tag == "rcbox" && k == true && whitetun == 1)
@@ -195,25 +249,33 @@ public class CON1 : MonoBehaviour
                     selObj.GetComponent<King>().moveObj = true;
                     selObj.GetComponent<King>().rcas.GetComponent<Rook>().csObj = true;                   
                     whitetun *= -1;
+                    Trunck();
                     tep = true;
                 }
                 if (tagetObj.tag == "pointmove" && k == true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().kmovesep.Play();
                     k = false;
+                    selObj.GetComponent<EpCon>().MoveEp();
                     selObj.GetComponent<King>().moveObj = true;
                     tep = true;
                     whitetun *= -1;
+                    Trunck();
                 }
                 if (tagetObj.tag == "atbox" && k == true && whitetun == 1)
                 {
+                    soundObj.GetComponent<SoundMain>().kmovesep.Play();
                     whitetun *= -1;
+                    Trunck();
                     k = false;
+                    soundObj.GetComponent<SoundMain>().kat.Play();
                     selObj.GetComponent<King>().moveObj = true;
                     tep = true;
                     tagetObj.GetComponent<ATboxp>().Delete();
                 }
                 if (tagetObj.tag == "Board")
                 {
+                    soundObj.GetComponent<SoundMain>().beck.Play();
                     pw = false;
                     bs = false;
                     bbs = false;
@@ -225,6 +287,7 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "bpawn" && tep == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().pselsep.Play();
                     pw = true;
                     tep = false;
                     tagetObj.GetComponent<Bpawn>().pOnOff = true;
@@ -232,21 +295,28 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "pointmove" && pw == true&&whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().pmovesep.Play();
                     pw = false;
+                    selObj.GetComponent<EpCon>().MoveEp();
                     selObj.GetComponent<Bpawn>().moveObj = true;
                     tep = true;
+                    Trunck();
                     whitetun *= -1;
                 }
                 if (tagetObj.tag == "atbox" && pw == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().pmovesep.Play();
                     whitetun *= -1;
+                    Trunck();
                     pw = false;
+                    soundObj.GetComponent<SoundMain>().pat.Play();
                     selObj.GetComponent<Bpawn>().moveObj = true;
                     tep = true;
                     tagetObj.GetComponent<ATboxb>().Delete();
                 }
                 if (tagetObj.tag == "bbishop" && tep == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().bselsep.Play();
                     bbs = true;
                     tep = false;
                     tagetObj.GetComponent<Bishop>().pOnOff = true;
@@ -254,21 +324,28 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "pointmove" && bbs == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().bmovesep.Play();
                     bbs = false;
+                    selObj.GetComponent<EpCon>().MoveEp();
                     selObj.GetComponent<Bishop>().moveObj = true;
                     tep = true;
                     whitetun *= -1;
+                    Trunck();
                 }
                 if (tagetObj.tag == "atbox" && bbs == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().bmovesep.Play();
                     whitetun *= -1;
+                    Trunck();
                     bbs = false;
+                    soundObj.GetComponent<SoundMain>().bat.Play();
                     selObj.GetComponent<Bishop>().moveObj = true;
                     tep = true;
                     tagetObj.GetComponent<ATboxb>().Delete();
                 }
                 if (tagetObj.tag == "bqueen" && tep == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().qselsep.Play();
                     q = true;
                     tep = false;
                     tagetObj.GetComponent<Queen>().pOnOff = true;
@@ -276,21 +353,28 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "pointmove" && q == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().qmovesep.Play();
                     q = false;
+                    selObj.GetComponent<EpCon>().MoveEp();
                     selObj.GetComponent<Queen>().moveObj = true;
                     tep = true;
                     whitetun *= -1;
+                    Trunck();
                 }
                 if (tagetObj.tag == "atbox" && q == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().qmovesep.Play();
                     whitetun *= -1;
                     q = false;
+                    soundObj.GetComponent<SoundMain>().qAt.Play();
                     selObj.GetComponent<Queen>().moveObj = true;
                     tep = true;
                     tagetObj.GetComponent<ATboxb>().Delete();
+                    Trunck();
                 }
                 if (tagetObj.tag == "bknight" && tep == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().nselsep.Play();
                     kn = true;
                     tep = false;
                     tagetObj.GetComponent<Knight>().pOnOff = true;
@@ -298,21 +382,28 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "pointmove" && kn == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().nmovesep.Play();
                     kn = false;
+                    selObj.GetComponent<EpCon>().MoveEp();
                     selObj.GetComponent<Knight>().moveObj = true;
                     tep = true;
                     whitetun *= -1;
+                    Trunck();
                 }
                 if (tagetObj.tag == "atbox" && kn == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().nmovesep.Play();
                     whitetun *= -1;
                     kn = false;
+                    soundObj.GetComponent<SoundMain>().nat.Play();
                     selObj.GetComponent<Knight>().moveObj = true;
                     tep = true;
                     tagetObj.GetComponent<ATboxb>().Delete();
+                    Trunck();
                 }
                 if (tagetObj.tag == "brook" && tep == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().rselsep.Play();
                     rk = true;
                     tep = false;
                     tagetObj.GetComponent<Rook>().pOnOff = true;
@@ -320,21 +411,29 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "pointmove" && rk == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().rmovesep.Play();
                     rk = false;
+                    selObj.GetComponent<EpCon>().MoveEp();
                     selObj.GetComponent<Rook>().moveObj = true;
                     tep = true;
                     whitetun *= -1;
+                    Trunck();
                 }
                 if (tagetObj.tag == "atbox" && rk == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().rmovesep.Play();
                     whitetun *= -1;
                     rk = false;
+                    soundObj.GetComponent<SoundMain>().rat.Play();
+                    soundObj.GetComponent<SoundMain>().ratv.Play();
                     selObj.GetComponent<Rook>().moveObj = true;
                     tep = true;
                     tagetObj.GetComponent<ATboxb>().Delete();
+                    Trunck();
                 }
                 if (tagetObj.tag == "bking" && tep == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().kselsep.Play();
                     k = true;
                     tep = false;
                     tagetObj.GetComponent<King>().pOnOff = true;
@@ -342,17 +441,22 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "pointmove" && k == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().kmovesep.Play();
                     k = false;
+                    selObj.GetComponent<EpCon>().MoveEp();
                     selObj.GetComponent<King>().moveObj = true;
                     tep = true;
                     whitetun *= -1;
+                    Trunck();
                 }
                 if (tagetObj.tag == "lcbox" && k == true && whitetun == -1)
                 {
+                    soundObj.GetComponent<SoundMain>().kmovesep.Play();
                     k = false;
                     selObj.GetComponent<King>().moveObj = true;
                     selObj.GetComponent<King>().lcas.GetComponent<Rook>().csObj1 = true;                    
                     whitetun *= -1;
+                    Trunck();
                     tep = true;
                 }
                 if (tagetObj.tag == "rcbox" && k == true && whitetun == -1)
@@ -361,12 +465,15 @@ public class CON1 : MonoBehaviour
                     selObj.GetComponent<King>().moveObj = true;
                     selObj.GetComponent<King>().rcas.GetComponent<Rook>().csObj = true;                   
                     whitetun *= -1;
+                    Trunck();
                     tep = true;
                 }
                 if (tagetObj.tag == "atbox" && k == true && whitetun == -1)
                 {
                     whitetun *= -1;
+                    Trunck();
                     k = false;
+                    soundObj.GetComponent<SoundMain>().kat.Play();
                     selObj.GetComponent<King>().moveObj = true;                    
                     tep = true;
                     tagetObj.GetComponent<ATboxb>().Delete();
@@ -374,36 +481,111 @@ public class CON1 : MonoBehaviour
             }
         }        
     }
+    public void Drawck()
+    {
+        if (whitetun == 1)
+        {
+            Winblack();
+        }
+        if (whitetun == -1)
+        {
+            Winwhigt();
+        }
+    }
+    public void Winwhigt()
+    {
+        soundObj.GetComponent<SoundMain>().win.Play();
+        menu.SetActive(false);
+        wwin.SetActive(true);
+    }
+    public void Winblack()
+    {
+        soundObj.GetComponent<SoundMain>().win.Play();
+        menu.SetActive(false);
+        bwin.SetActive(true);
+    }
+    public void Drawtext()
+    {
+        soundObj.GetComponent<SoundMain>().draw.Play();
+        menu.SetActive(false);
+        draw.SetActive(true);
+    }
+    public void MenuText()
+    {
+        menu.SetActive(true);
+    }
+    public void MenuTextExit()
+    {
+        menu.SetActive(false);
+    }
+    public void Mutesoundon()
+    {
+        soundObj.SetActive(true);
+    }
+    public void Mutesoundoff()
+    {
+        soundObj.SetActive(false);
+    }
     public void WQin()
     {
+        soundObj.GetComponent<SoundMain>().lv.Play();
         selObj.GetComponent<Pawn>().Qn();
     }
     public void WBin()
     {
+        soundObj.GetComponent<SoundMain>().lv.Play();
         selObj.GetComponent<Pawn>().Bs();
     }
     public void WRin()
     {
+        soundObj.GetComponent<SoundMain>().lv.Play();
         selObj.GetComponent<Pawn>().Rk();
     }
     public void WNin()
     {
+        soundObj.GetComponent<SoundMain>().lv.Play();
         selObj.GetComponent<Pawn>().Nk();
     }
     public void BQin()
     {
+        soundObj.GetComponent<SoundMain>().lv.Play();
         selObj.GetComponent<Bpawn>().Qn();
     }
     public void BBin()
     {
+        soundObj.GetComponent<SoundMain>().lv.Play();
         selObj.GetComponent<Bpawn>().Bs();
     }
     public void BRin()
     {
+        soundObj.GetComponent<SoundMain>().lv.Play();
         selObj.GetComponent<Bpawn>().Rk();
     }
     public void BNin()
     {
+        soundObj.GetComponent<SoundMain>().lv.Play();
         selObj.GetComponent<Bpawn>().Nk();
     }
+    public void Startbut()
+    {
+        SceneManager.LoadScene(1);
+
+    }
+    public void Exittbut()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void Trunck()
+    {
+        soundObj.GetComponent<SoundMain>().Tun.Play();
+        trun.SetActive(true);
+        trun.GetComponent<TweenScale>().PlayForward();
+    }
+    public void Trunckend()
+    {
+        trun.GetComponent<TweenScale>().ResetToBeginning();
+        trun.SetActive(false);
+    }
+
+
 }

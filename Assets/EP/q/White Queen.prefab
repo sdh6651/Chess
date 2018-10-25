@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 54043173193487280}
   - component: {fileID: 65812426289997904}
   - component: {fileID: 114867790422083852}
+  - component: {fileID: 114077353679327992}
   m_Layer: 0
   m_Name: White Queen
   m_TagString: queen
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1903548607094450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 2.75, z: -3.5}
   m_LocalScale: {x: 0.049999997, y: 0.049999997, z: 0.049999997}
   m_Children: []
   m_Father: {fileID: 0}
@@ -113,6 +114,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.8923483, y: 11.9258, z: 5.892349}
   m_Center: {x: 0, y: 5.9835176, z: 0}
+--- !u!114 &114077353679327992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1903548607094450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d26558627b23246855fb9524957525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveEp: {fileID: 1271997893731502, guid: 40ee47dffc75fa048a1ff0b0cef3d280, type: 2}
+  atEp: {fileID: 1661539950475236, guid: c8b5bde4859580c43823bba9c173304e, type: 2}
+  dieEp: {fileID: 1854812759489748, guid: b6aeb59e30cfff64287fca4c4433b3a0, type: 2}
+  con: {fileID: 0}
+  pos: {fileID: 0}
 --- !u!114 &114867790422083852
 MonoBehaviour:
   m_ObjectHideFlags: 1

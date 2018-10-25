@@ -22,6 +22,7 @@ public class King : MonoBehaviour {
     public GameObject rcas;
     public GameObject lcbox;
     public GameObject rcbox;
+
     void Start()
     {
         cameracon = GameObject.Find("Main Camera");

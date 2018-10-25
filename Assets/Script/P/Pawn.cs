@@ -21,8 +21,9 @@ public class Pawn : MonoBehaviour {
     public GameObject qObj;
     public GameObject bObj;
     public GameObject nObj;
-    public GameObject rObj;   
-
+    public GameObject rObj;
+    public GameObject lvbj;
+    
     void Start()
     {
         cameracon = GameObject.Find("Main Camera");       
@@ -81,24 +82,28 @@ public class Pawn : MonoBehaviour {
     public void Qn()
     {
         guilevel.SetActive(false);
+        Instantiate(lvbj, new Vector3(mx, my, mz), Quaternion.Euler(-90, 0, 0));
         Instantiate(qObj, new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
         Destroy(gameObject);
     }
     public void Bs()
     {
         guilevel.SetActive(false);
+        Instantiate(lvbj, new Vector3(mx, my, mz), Quaternion.Euler(-90, 0, 0));
         Instantiate(bObj,new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
         Destroy(gameObject);
     }
     public void Rk()
     {
         guilevel.SetActive(false);
+        Instantiate(lvbj, new Vector3(mx, my, mz), Quaternion.Euler(-90, 0, 0));
         Instantiate(rObj,new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
         Destroy(gameObject);
     }
     public void Nk()
     {
         guilevel.SetActive(false);
+        Instantiate(lvbj, new Vector3(mx, my, mz), Quaternion.Euler(-90, 0, 0));
         Instantiate(nObj, new Vector3(mx, my, mz), Quaternion.Euler(0, 0, 0));
         Destroy(gameObject);
     }

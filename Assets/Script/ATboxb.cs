@@ -9,8 +9,11 @@ public class ATboxb : MonoBehaviour
     public bool enck;
     public GameObject ineObj;
     public float wtun;
+    public GameObject soundObj;
+    public GameObject selobj1;
     void Start()
     {
+        soundObj = GameObject.Find("Sound");
         con = GameObject.Find("Main Camera");
         despoint = false;
         wtun = con.GetComponent<CON1>().whitetun;
@@ -18,6 +21,7 @@ public class ATboxb : MonoBehaviour
     }
     void Update()
     {
+        selobj1 = con.GetComponent<CON1>().selObj;
         despoint = con.GetComponent<CON1>().tep;
         if (despoint == true)
         {
@@ -63,52 +67,66 @@ public class ATboxb : MonoBehaviour
     {
         if (ineObj.gameObject.tag == "king")
         {
+            soundObj.GetComponent<SoundMain>().kdiesep.Play();
             con.GetComponent<CON1>().wklog = +1;
         }
-        if (ineObj.gameObject.tag =="bking")
+        if (ineObj.gameObject.tag == "bking")
         {
-            con.GetComponent<CON1>().bklog=+1;
+            soundObj.GetComponent<SoundMain>().kdiesep.Play();
+            con.GetComponent<CON1>().bklog = +1;
         }
         if (ineObj.gameObject.tag == "bqueen")
         {
-            con.GetComponent<CON1>().bqlog= +1;
+            soundObj.GetComponent<SoundMain>().qdiesep.Play();
+            con.GetComponent<CON1>().bqlog = +1;
         }
         if (ineObj.gameObject.tag == "queen")
         {
-            con.GetComponent<CON1>().wqlog= +1;
+            soundObj.GetComponent<SoundMain>().qdiesep.Play();
+            con.GetComponent<CON1>().wqlog = +1;
         }
         if (ineObj.gameObject.tag == "bbishop")
         {
-            con.GetComponent<CON1>().bblog= +1;
+            soundObj.GetComponent<SoundMain>().bdiesep.Play();
+            con.GetComponent<CON1>().bblog = +1;
         }
         if (ineObj.gameObject.tag == "bishop")
         {
+            soundObj.GetComponent<SoundMain>().bdiesep.Play();
             con.GetComponent<CON1>().wblog = +1;
         }
         if (ineObj.gameObject.tag == "rook")
         {
-            con.GetComponent<CON1>().wrlog= +1;
+            soundObj.GetComponent<SoundMain>().rdiesep.Play();
+            con.GetComponent<CON1>().wrlog = +1;
         }
-        if (ineObj.gameObject.tag =="brook")
+        if (ineObj.gameObject.tag == "brook")
         {
+            soundObj.GetComponent<SoundMain>().rdiesep.Play();
             con.GetComponent<CON1>().brlog = +1;
         }
         if (ineObj.gameObject.tag == "knight")
-        { 
-            con.GetComponent<CON1>().wklog = +1;
-        }
-        if (ineObj.gameObject.tag =="bknight")
         {
-            con.GetComponent<CON1>().bklog = +1;
+            soundObj.GetComponent<SoundMain>().ndiesep.Play();
+            con.GetComponent<CON1>().wnlog = +1;
+        }
+        if (ineObj.gameObject.tag == "bknight")
+        {
+            soundObj.GetComponent<SoundMain>().ndiesep.Play();
+            con.GetComponent<CON1>().bnlog = +1;
         }
         if (ineObj.gameObject.tag == "bpawn")
         {
+            soundObj.GetComponent<SoundMain>().pdiesep.Play();
             con.GetComponent<CON1>().bplog = +1;
         }
         if (ineObj.gameObject.tag == "pawn")
         {
+            soundObj.GetComponent<SoundMain>().pdiesep.Play();
             con.GetComponent<CON1>().wplog = +1;
         }
+        selobj1.GetComponent<EpCon>().ATEp();
+        ineObj.GetComponent<EpCon>().DieEp();
         Destroy(ineObj);
     }
     public void MyDelete()
