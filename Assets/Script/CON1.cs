@@ -46,6 +46,26 @@ public class CON1 : MonoBehaviour
     public GameObject wlog;
     public GameObject blog;
     public GameObject trun;
+    public UILabel nlogl;
+    public UILabel blogl;
+    public UILabel qlogl;
+    public UILabel plogl;
+    public UILabel rlogl;
+    public UILabel bnlogl;
+    public UILabel bblogl;
+    public UILabel bqlogl;
+    public UILabel bplogl;
+    public UILabel brlogl;
+    public GameObject pc;
+    public GameObject qc;
+    public GameObject rc;
+    public GameObject nc;
+    public GameObject kc;
+    public GameObject bc;
+    public GameObject redpc;
+    public GameObject blackpc;
+    public GameObject ep;
+    public bool ckobjc;
 
     void Start()
     {
@@ -53,7 +73,7 @@ public class CON1 : MonoBehaviour
         whitetun = 1;       
     }
     void Update()
-    {
+    {        
         if (bklog == 1)
         {
             Winwhigt();
@@ -77,9 +97,12 @@ public class CON1 : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Debug.Log(hit.transform.name);
-                tagetObj = hit.transform.gameObject;                
+                tagetObj = hit.transform.gameObject;
+                ckobjc = false;
                 if (tagetObj.tag == "pawn"&& tep == true&&whitetun==1)
                 {
+                    Instantiate(ep,new Vector3(-0.5f,4.5f,-3.5f),Quaternion.Euler(0,0,0));
+                    Instantiate(pc, new Vector3(-3, -0.4f, -7.5f), Quaternion.Euler(0, 26, 0));                  
                     soundObj.GetComponent<SoundMain>().pselsep.Play();
                     pw = true;
                     tep = false;
@@ -109,6 +132,8 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "bishop" && tep == true && whitetun == 1)
                 {
+                    Instantiate(ep, new Vector3(-0.5f, 4.5f, -3.5f), Quaternion.Euler(0, 0, 0));
+                    Instantiate(bc, new Vector3(-3, -0.4f, -7.5f), Quaternion.Euler(0, 26, 0));
                     soundObj.GetComponent<SoundMain>().bselsep.Play();
                     bs = true;
                     tep = false;
@@ -138,6 +163,8 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "queen" && tep == true && whitetun == 1)
                 {
+                    Instantiate(ep, new Vector3(-0.5f, 4.5f, -3.5f), Quaternion.Euler(0, 0, 0));
+                    Instantiate(qc, new Vector3(-3, -0.4f, -7.5f), Quaternion.Euler(0, 26, 0));
                     soundObj.GetComponent<SoundMain>().qselsep.Play();
                     q = true;
                     limt = 0;
@@ -168,6 +195,8 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "knight" && tep == true && whitetun == 1)
                 {
+                    Instantiate(ep, new Vector3(-0.5f, 4.5f, -3.5f), Quaternion.Euler(0, 0, 0));
+                    Instantiate(nc, new Vector3(-3, -0.4f, -7.5f), Quaternion.Euler(0, 26, 0));
                     soundObj.GetComponent<SoundMain>().nselsep.Play();
                     kn = true;
                     limt = 0;
@@ -198,6 +227,8 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "rook" && tep == true && whitetun == 1)
                 {
+                    Instantiate(ep, new Vector3(-0.5f, 4.5f, -3.5f), Quaternion.Euler(0, 0, 0));
+                    Instantiate(rc, new Vector3(-3, -0.4f, -7.5f), Quaternion.Euler(0, 26, 0));
                     soundObj.GetComponent<SoundMain>().rselsep.Play();
                     rk = true;
                     tep = false;
@@ -228,6 +259,8 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "king" && tep == true && whitetun == 1)
                 {
+                    Instantiate(ep, new Vector3(-0.5f, 4.5f, -3.5f), Quaternion.Euler(0, 0, 0));
+                    Instantiate(kc, new Vector3(-3, -0.4f, -7.5f), Quaternion.Euler(0, 26, 0));
                     soundObj.GetComponent<SoundMain>().kselsep.Play();
                     k = true;
                     tep = false;
@@ -273,7 +306,7 @@ public class CON1 : MonoBehaviour
                     tep = true;
                     tagetObj.GetComponent<ATboxp>().Delete();
                 }
-                if (tagetObj.tag == "Board")
+                if (tagetObj.tag == "Board"|| tagetObj.tag == "wall")
                 {
                     soundObj.GetComponent<SoundMain>().beck.Play();
                     pw = false;
@@ -284,9 +317,12 @@ public class CON1 : MonoBehaviour
                     kn = false;
                     k = false;
                     tep = true;
+                    ckobjc = true;
                 }
                 if (tagetObj.tag == "bpawn" && tep == true && whitetun == -1)
                 {
+                    Instantiate(ep, new Vector3(2,3, 1), Quaternion.Euler(0, 0, 0));
+                    Instantiate(pc, new Vector3(3, -0.4f, 3), Quaternion.Euler(0, -140, 0));
                     soundObj.GetComponent<SoundMain>().pselsep.Play();
                     pw = true;
                     tep = false;
@@ -316,6 +352,8 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "bbishop" && tep == true && whitetun == -1)
                 {
+                    Instantiate(ep, new Vector3(2, 3, 1), Quaternion.Euler(0, 0, 0));
+                    Instantiate(bc, new Vector3(3, -0.4f, 3), Quaternion.Euler(0, -140, 0));
                     soundObj.GetComponent<SoundMain>().bselsep.Play();
                     bbs = true;
                     tep = false;
@@ -345,6 +383,8 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "bqueen" && tep == true && whitetun == -1)
                 {
+                    Instantiate(ep, new Vector3(2, 3, 1), Quaternion.Euler(0, 0, 0));
+                    Instantiate(qc, new Vector3(3, -0.4f, 3), Quaternion.Euler(0, -140, 0));
                     soundObj.GetComponent<SoundMain>().qselsep.Play();
                     q = true;
                     tep = false;
@@ -374,6 +414,8 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "bknight" && tep == true && whitetun == -1)
                 {
+                    Instantiate(ep, new Vector3(2, 3, 1), Quaternion.Euler(0, 0, 0));
+                    Instantiate(nc, new Vector3(3, -0.4f, 3), Quaternion.Euler(0, -140, 0));
                     soundObj.GetComponent<SoundMain>().nselsep.Play();
                     kn = true;
                     tep = false;
@@ -403,6 +445,8 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "brook" && tep == true && whitetun == -1)
                 {
+                    Instantiate(ep, new Vector3(2, 3, 1), Quaternion.Euler(0, 0, 0));
+                    Instantiate(rc, new Vector3(3, -0.4f, 3), Quaternion.Euler(0, -140, 0));
                     soundObj.GetComponent<SoundMain>().rselsep.Play();
                     rk = true;
                     tep = false;
@@ -433,6 +477,8 @@ public class CON1 : MonoBehaviour
                 }
                 if (tagetObj.tag == "bking" && tep == true && whitetun == -1)
                 {
+                    Instantiate(ep, new Vector3(2, 3, 1), Quaternion.Euler(0, 0, 0));
+                    Instantiate(kc, new Vector3(3, -0.4f, 3), Quaternion.Euler(0, -140, 0));
                     soundObj.GetComponent<SoundMain>().kselsep.Play();
                     k = true;
                     tep = false;
@@ -585,6 +631,29 @@ public class CON1 : MonoBehaviour
     {
         trun.GetComponent<TweenScale>().ResetToBeginning();
         trun.SetActive(false);
+    }
+    public void Logui()
+    {
+        string wql = wqlog.ToString("N0");
+        string wrl = wrlog.ToString("N0");
+        string wbl = wblog.ToString("N0");
+        string wnl = wnlog.ToString("N0");
+        string wpl = wplog.ToString("N0");
+        string bql = bqlog.ToString("N0");
+        string brl = brlog.ToString("N0");
+        string bbl = bblog.ToString("N0");
+        string bnl = bnlog.ToString("N0");
+        string bpl = bplog.ToString("N0");
+        qlogl.text = "Q:" + wql;
+        rlogl.text = "R:" + wrl;
+        blogl.text = "B:" + wbl;
+        nlogl.text = "N:" + wnl;
+        plogl.text = "P:" + wpl;
+        bqlogl.text = "Q:" + bql;
+        brlogl.text = "R:" + brl;
+        bblogl.text = "B:" + bbl;
+        bnlogl.text = "N:" + bnl;
+        bplogl.text = "P:" + bpl;
     }
 
 
